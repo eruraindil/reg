@@ -3,7 +3,7 @@
 namespace Stikmen\RegBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class EventsController extends Controller
 {
@@ -12,21 +12,19 @@ class EventsController extends Controller
     return $this->render('StikmenRegBundle:Events:index.html.twig');
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function createAction()
   {
-    if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException();
-    }
-
     return $this->render('StikmenRegBundle:Events:create.html.twig');
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function storeAction()
   {
-    if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException();
-    }
-
     return null;
   }
 
@@ -35,30 +33,27 @@ class EventsController extends Controller
     return null;
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function editAction()
   {
-    if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException();
-    }
-
     return null;
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function updateAction()
   {
-    if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException();
-    }
-
     return null;
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function destroyAction()
   {
-    if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-        throw new AccessDeniedException();
-    }
-
     return null;
   }
 }

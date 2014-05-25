@@ -21,15 +21,24 @@
             <li><a href="{{ path('events') }}">Events</a></li>
             <li><a href="{{ path('contact') }}">Contact</a></li>
           </ul>
-          <form action="{{ path('login_check') }}" method="post" class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" id="username" name="_username" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" id="password" name="_password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+          {% if is_granted('ROLE_USER') %}
+            <ul class="nav navbar-nav navbar-right">
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('users') }}">Users</a></li>
+              {% endif %}
+              <li><a href="{{ path('logout') }}">Logout</a></li>
+            </ul>
+          {% else %}
+            <form action="{{ path('login_check') }}" method="post" class="navbar-form navbar-right" role="form">
+              <div class="form-group">
+                <input type="email" id="username" name="_username" placeholder="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="password" id="password" name="_password" placeholder="password" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </div>

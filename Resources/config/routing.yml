@@ -1,5 +1,5 @@
 homepage:
-  path:  /
+  path: /
   defaults: { _controller: StikmenRegBundle:Default:index }
 
 contact:
@@ -13,9 +13,13 @@ login:
 login_check:
   path: /login_check
 
+logout:
+    path: /logout
+
 events:
   path: /events
   defaults: { _controller: StikmenRegBundle:Events:index }
+  methods: [GET]
 
 events_create:
   path: /events/create
@@ -29,6 +33,7 @@ events_store:
 events_show:
   path: /events/{id}
   defaults: { _controller: StikmenRegBundle:Events:show }
+  methods: [GET]
 
 events_edit:
   path: /events/{id}/edit
@@ -44,12 +49,17 @@ events_destroy:
   defaults: { _controller: StikmenRegBundle:Events:destroy }
   methods: [DELETE]
 
+users:
+  path: /users
+  defaults: { _controller: StikmenRegBundle:Users:index }
+  methods: [GET]
 
 users_create:
   path: /users/create
-  defaults: { _controller: StikmenRegBundle:Default:userCreate }
+  defaults: { _controller: StikmenRegBundle:Users:create }
+  methods: [GET]
 
 users_store:
-  path: /users/create
-  defaults: { _controller: StikmenRegBundle:Default:userStore }
+  path: /users
+  defaults: { _controller: StikmenRegBundle:Users:store }
   methods: [POST]

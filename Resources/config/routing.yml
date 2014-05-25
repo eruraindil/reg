@@ -63,3 +63,22 @@ users_store:
   path: /users
   defaults: { _controller: StikmenRegBundle:Users:store }
   methods: [POST]
+
+users_show:
+  path: /users/{id}
+  defaults: { _controller: StikmenRegBundle:Users:show }
+  methods: [GET]
+
+users_edit:
+  path: /users/{id}/edit
+  defaults: { _controller: StikmenRegBundle:Users:edit }
+
+users_update:
+  path: /events/{id}
+  defaults: { _controller: StikmenRegBundle:Users:update }
+  methods: [PUT]
+
+users_destroy:
+  path: /users/{id}
+  defaults: { _controller: StikmenRegBundle:Users:destroy }
+  methods: [DELETE]

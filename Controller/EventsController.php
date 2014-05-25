@@ -28,7 +28,7 @@ class EventsController extends Controller
     return null;
   }
 
-  public function showAction()
+  public function showAction($id)
   {
     return null;
   }

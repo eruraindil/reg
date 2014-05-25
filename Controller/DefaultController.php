@@ -44,46 +44,4 @@ class DefaultController extends Controller
       )
     );
   }
-
-  public function usersCreateAction()
-  {
-    $user = new User();
-
-    $form = $this->createForm(new UserType(), $user, array(
-      'action' => $this->generateUrl('users_store'),
-    ));
-
-    return $this->render(
-      'StikmenRegBundle:Default:usersCreate.html.twig',
-      array('form' => $form->createView())
-    );
-  }
-
-  public function usersStoreAction(Request $request)
-  {
-    $em = $this->getDoctrine()->getManager();
-    $form = $this->createForm(new UserType(), new User());
-
-    $form->handleRequest($request);
-
-    if ($form->isValid()) {
-      $user = $form->getData();
-
-      $factory = $this->get('security.encoder_factory');
-      $encoder = $factory->getEncoder($user);
-
-      $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-      $user->setPassword($password);
-
-      $em->persist($user);
-      $em->flush();
-
-      return $this->redirect($this->generateUrl('homepage'));
-    }
-
-    return $this->render(
-      'StikmenRegBundle:Default:usersCreate.html.twig',
-      array('form' => $form->createView())
-    );
-  }
 }

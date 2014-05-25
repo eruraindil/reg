@@ -21,7 +21,7 @@ class UserType extends AbstractType
       'required' => true,
       'multiple' => true,
     ));
-    $builder->add('Register', 'submit');
+    $builder->add('register', 'submit');
   }
 
   public function setDefaultOptions(OptionsResolverInterface $resolver)

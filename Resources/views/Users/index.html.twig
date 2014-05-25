@@ -5,7 +5,19 @@
 {% endblock %}
 
 {% block content %}
-<p>List of users</p>
-<a href="{{ path('users_create') }}">Create user</a>
+<h1>Users</h1>
+
+<a href="{{ path('users_create') }}" class="btn btn-primary">Create user</a>
+
+{% for user in users %}
+<ul class="list-group">
+  <li class="list-group-item clearfix">{{ user.getUsername() }}</a>
+    <div class="btn-group pull-right">
+      <a href="{{ path('users_edit', { 'id': user.getId() }) }}" class="btn btn-warning">Edit <span class="glyphicon glyphicon-edit"></span></a>
+      <a href="" class="btn btn-danger">Delete <span class="glyphicon glyphicon-remove"></span></a>
+    </div>
+  </li>
+</ul>
+{% endfor %}
 
 {% endblock %}

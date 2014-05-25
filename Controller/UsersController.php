@@ -6,16 +6,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Stikmen\RegBundle\Entity\User;
 use Stikmen\RegBundle\Form\Type\UserType;
 
 class UsersController extends Controller
 {
+
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function indexAction()
   {
-    return $this->render('StikmenRegBundle:Users:index.html.twig');
+    $repository = $this->getDoctrine()
+      ->getRepository('StikmenRegBundle:User');
+
+    $users = $repository->findAll();
+
+    return $this->render(
+      'StikmenRegBundle:Users:index.html.twig',
+      array('users' => $users)
+    );
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function createAction()
   {
     $user = new User();
@@ -30,6 +46,9 @@ class UsersController extends Controller
     );
   }
 
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
   public function storeAction(Request $request)
   {
     $em = $this->getDoctrine()->getManager();
@@ -56,5 +75,37 @@ class UsersController extends Controller
       'StikmenRegBundle:Users:create.html.twig',
       array('form' => $form->createView())
     );
+  }
+
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
+  public function showAction($id)
+  {
+    return null;
+  }
+
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
+  public function editAction($id)
+  {
+    return null;
+  }
+
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
+  public function updateAction()
+  {
+    return null;
+  }
+
+  /**
+   * @Security("has_role('ROLE_ADMIN')")
+   */
+  public function destroyAction($id)
+  {
+    return null;
   }
 }

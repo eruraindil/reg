@@ -4,6 +4,63 @@
     Create user
 {% endblock %}
 
+{% block stylesheets %}
+<style>
+  body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+  }
+
+  form {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  form  .form-heading,
+  form checkbox {
+    margin-bottom: 10px;
+  }
+  form checkbox {
+    font-weight: normal;
+  }
+  form .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+  form .form-control:focus {
+    z-index: 2;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-  {{ form(form) }}
+
+  {{ form_start(form, {'attr': {'role': 'form'}}) }}
+    <h1 class="form-heading">Create user</h1>
+    {{ form_errors(form) }}
+    <div class="form-group">
+      {{ form_label(form.username) }}
+      {{ form_errors(form.username) }}
+      {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.password) }}
+      {{ form_errors(form.password) }}
+      {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.roles) }}
+      {{ form_errors(form.roles) }}
+      {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {{ form_widget(form.register, {'attr': {'class': 'btn btn-lg btn-primary btn-block'}}) }}
+  {{ form_end(form) }}
 {% endblock %}

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<p>List of events</p>
+<h1>List of events</h1>
 {% if is_granted('ROLE_ADMIN') %}
   <a href="{{ path('events_create') }}">Create event</a>
 {% endif %}

@@ -51,7 +51,7 @@
 
 {% block content %}
 <form class="form-signin" role="form" action="{{ path('login_check') }}" method="post">
-  <h2 class="form-signin-heading">Please sign in</h2>
+  <h1 class="form-signin-heading">Please sign in</h1>
   {% if error %}
     <div class="alert alert-danger">{{ error.message }}</div>
   {% endif %}

@@ -1,0 +1,11 @@
+stikmen_reg_homepage:
+    pattern:  /
+    defaults: { _controller: StikmenRegBundle:Default:index }
+
+stikmen_reg_contact:
+    pattern: /contact
+    defaults: {_controller: StikmenRegBundle:Default:contact }
+
+stikmen_reg_events:
+    pattern: /events
+    defaults: {_controller: StikmenRegBundle:Events:index }

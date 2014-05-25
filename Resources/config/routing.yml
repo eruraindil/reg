@@ -6,6 +6,13 @@ contact:
   path: /contact
   defaults: { _controller: StikmenRegBundle:Default:contact }
 
+login:
+  path: /login
+  defaults: { _controller: StikmenRegBundle:Default:login }
+
+login_check:
+  path: /login_check
+
 events:
   path: /events
   defaults: { _controller: StikmenRegBundle:Events:index }
@@ -36,3 +43,13 @@ events_destroy:
   path: /events/{id}
   defaults: { _controller: StikmenRegBundle:Events:destroy }
   methods: [DELETE]
+
+
+users_create:
+  path: /users/create
+  defaults: { _controller: StikmenRegBundle:Default:userCreate }
+
+users_store:
+  path: /users/create
+  defaults: { _controller: StikmenRegBundle:Default:userStore }
+  methods: [POST]

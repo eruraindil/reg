@@ -1,12 +1,14 @@
 <?php
+
 namespace Stikmen\RegBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -28,7 +30,7 @@ class User
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -51,7 +53,7 @@ class User
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -74,10 +76,30 @@ class User
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
         return $this->password;
+    }
+
+    public function getRoles()
+    {
+      return null;
+    }
+
+    public function getSalt()
+    {
+      return null;
+    }
+
+    public function getUsername()
+    {
+      return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+      return null;
     }
 }

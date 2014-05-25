@@ -1,11 +1,38 @@
-stikmen_reg_homepage:
-    pattern:  /
-    defaults: { _controller: StikmenRegBundle:Default:index }
+homepage:
+  path:  /
+  defaults: { _controller: StikmenRegBundle:Default:index }
 
-stikmen_reg_contact:
-    pattern: /contact
-    defaults: {_controller: StikmenRegBundle:Default:contact }
+contact:
+  path: /contact
+  defaults: { _controller: StikmenRegBundle:Default:contact }
 
-stikmen_reg_events:
-    pattern: /events
-    defaults: {_controller: StikmenRegBundle:Events:index }
+events:
+  path: /events
+  defaults: { _controller: StikmenRegBundle:Events:index }
+
+events_create:
+  path: /events/create
+  defaults: { _controller: StikmenRegBundle:Events:create }
+
+events_store:
+  path: /events
+  defaults: { _controller: StikmenRegBundle:Events:store }
+  methods: [POST]
+
+events_show:
+  path: /events/{id}
+  defaults: { _controller: StikmenRegBundle:Events:show }
+
+events_edit:
+  path: /events/{id}/edit
+  defaults: { _controller: StikmenRegBundle:Events:edit }
+
+events_update:
+  path: /events/{id}
+  defaults: { _controller: StikmenRegBundle:Events:update }
+  methods: [PUT]
+
+events_destroy:
+  path: /events/{id}
+  defaults: { _controller: StikmenRegBundle:Events:destroy }
+  methods: [DELETE]

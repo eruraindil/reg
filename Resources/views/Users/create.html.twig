@@ -4,11 +4,8 @@
     Create user
 {% endblock %}
 
-{% block stylesheets %}
-<style>
+{% block customcss %}
   body {
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-color: #eee;
   }
 
@@ -36,7 +33,6 @@
   form .form-control:focus {
     z-index: 2;
   }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -47,7 +43,7 @@
     <div class="form-group">
       {{ form_label(form.username) }}
       {{ form_errors(form.username) }}
-      {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+      {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'email'}}) }}
     </div>
 
     <div class="form-group">

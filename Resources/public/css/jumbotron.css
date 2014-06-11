@@ -1,5 +1,16 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+
 body {
+  background: #fff;
   padding-top: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 0;
+}
+
+.navbar {
+  text-transform: uppercase;
+}
+
+.navbar-brand {
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
 }

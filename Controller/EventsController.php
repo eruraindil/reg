@@ -9,7 +9,15 @@ class EventsController extends Controller
 {
   public function indexAction()
   {
-    return $this->render('StikmenRegBundle:Events:index.html.twig');
+    $repository = $this->getDoctrine()
+      ->getRepository('StikmenRegBundle:Event');
+
+    $events = $repository->findAll();
+
+    return $this->render(
+      'StikmenRegBundle:Events:index.html.twig',
+      array('events' => $events)
+    );
   }
 
   /**
@@ -30,7 +38,15 @@ class EventsController extends Controller
 
   public function showAction($id)
   {
-    return null;
+    $repository = $this->getDoctrine()
+      ->getRepository('StikmenRegBundle:Event');
+
+    $event = $repository->find($id);
+
+    return $this->render(
+      'StikmenRegBundle:Events:show.html.twig',
+      array('event' => $event)
+    );
   }
 
   /**

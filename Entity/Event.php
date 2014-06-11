@@ -58,7 +58,7 @@ class Event
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -81,7 +81,7 @@ class Event
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -104,11 +104,20 @@ class Event
     /**
      * Get starttime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStarttime()
     {
         return $this->starttime;
+    }
+
+    public function getStarttimeAsStr($format) {
+      $dateObj = $this->getStarttime();
+      if($dateObj instanceof \DateTime) {
+        return $dateObj->format($format);
+      } else {
+        return date($format, strtotime($dateObj));
+      }
     }
 
     /**
@@ -127,11 +136,21 @@ class Event
     /**
      * Get endtime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndtime()
     {
         return $this->endtime;
+    }
+
+    public function getEndtimeAsStr($format) {
+      $dateObj = $this->getEndtime();
+
+      if($dateObj instanceof \DateTime) {
+        return $dateObj->format($format);
+      } else {
+        return date($format, strtotime($dateObj));
+      }
     }
 
     /**
@@ -150,7 +169,7 @@ class Event
     /**
      * Get cost
      *
-     * @return string 
+     * @return string
      */
     public function getCost()
     {
@@ -173,7 +192,7 @@ class Event
     /**
      * Get curAttendance
      *
-     * @return integer 
+     * @return integer
      */
     public function getCurAttendance()
     {
@@ -196,7 +215,7 @@ class Event
     /**
      * Get maxAttendance
      *
-     * @return integer 
+     * @return integer
      */
     public function getMaxAttendance()
     {
@@ -219,7 +238,7 @@ class Event
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -242,7 +261,7 @@ class Event
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {

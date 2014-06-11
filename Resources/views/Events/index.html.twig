@@ -4,10 +4,33 @@
     Events
 {% endblock %}
 
+{% block customcss %}
+  #create {
+    border-radius: 6px 6px 0 0;
+  }
+
+  #events-list li:first-child {
+    border-top-left-radius: 0;
+  }
+{% endblock %}
+
 {% block content %}
-<h1>List of events</h1>
+<h1>Events</h1>
+
 {% if is_granted('ROLE_ADMIN') %}
-  <a href="{{ path('events_create') }}">Create event</a>
+  <a href="{{ path('events_create') }}" class="btn btn-primary" id="create">Create event</a>
 {% endif %}
+<ul class="list-group" id="events-list">
+  {% for event in events %}
+  <li class="list-group-item"><a href="{{ path('events_show', { 'id': event.getId() }) }}">{{ event.getName() }}</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="btn-group pull-right">
+      <a href="{{ path('events_edit', { 'id': event.getId() }) }}" class="btn btn-xs btn-warning">Edit <span class="glyphicon glyphicon-edit"></span></a>
+      <a href="" class="btn btn-xs btn-danger">Delete <span class="glyphicon glyphicon-remove"></span></a>
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
 
 {% endblock %}

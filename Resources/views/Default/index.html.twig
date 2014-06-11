@@ -1,37 +1,83 @@
 {% extends 'StikmenRegBundle::base.html.twig' %}
 
 {% block title %}
-    Welcome
+  Welcome
+{% endblock %}
+
+{% block customcss %}
+  .jumbotron {
+    background: url({{ asset('bundles/stikmenreg/images/lineup.jpg') }}) no-repeat;
+    background-size: 100%;
+  }
+
+  #jumbotxt {
+    float:left;
+    background-color:rgba(34,34,34,0.7);
+    border:#222 solid 1px;
+    border-radius: 6px 6px 6px 0;
+    padding: 0 16px;
+    color: #fff;
+  }
+
+  #jumbotxt h1 {
+    font-family: 'Poiret One', cursive;
+    font-variant: small-caps;
+  }
+
+  .jumbotron a {
+    border-radius: 0 0 6px 6px;
+  }
+
+  #details {
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    text-align: center;
+    background: #fff;
+    margin: -50px auto 0 auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    line-height: 40px;
+    font-size: 20px;
+  }
 {% endblock %}
 
 {% block highlight %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <div id="jumbotxt">
+      <h1><span style="font-variant:normal;">e</span>REG<small> REGISTRATION SYSTEM</small></h1>
+      <p>free or paid event registration, employee assignment, and resource management</p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="btn-group">
+      <a class="btn btn-default btn-lg scroll" role="button" href="#details">learn more <span class="glyphicon glyphicon-chevron-down"></span></a>
+      <a class="btn btn-primary btn-lg" role="button">sign up <span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
   </div>
 </div>
 {% endblock %}
 
 {% block content %}
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-   </div>
-    <div class="col-md-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-    </div>
+<div id="details">eREG</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2>when &amp; where <small>events</small></h2>
+    <img class="img-responsive img-rounded" src="{{ asset('bundles/stikmenreg/images/events.jpg') }}">
+    <p>Create and manage events that allow user registration, and require employees and resources.</p>
+    <p><a class="btn btn-default" href="#" role="button">view details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
   </div>
+  <div class="col-md-4">
+    <h2>who <small>employees</small></h2>
+    <img class="img-responsive img-rounded" src="{{ asset('bundles/stikmenreg/images/employees.jpg') }}">
+    <p>Manage employee scheduling and timetables, taking into consideration availability and preferences.</p>
+    <p><a class="btn btn-default" href="#" role="button">view details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+ </div>
+  <div class="col-md-4">
+    <h2>what <small>resources</small></h2>
+    <img class="img-responsive img-rounded" src="{{ asset('bundles/stikmenreg/images/resources.jpg') }}">
+    <p>Whether it be computers or cars, different events require different resources. Never loose track of what is where.</p>
+    <p><a class="btn btn-default" href="#" role="button">view details <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+  </div>
+</div>
 {% endblock %}

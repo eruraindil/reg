@@ -1,56 +1,76 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-<link href="{{ asset('bundles/stikmenreg/css/jumbotron.css') }}" rel="stylesheet">
+  <link href="{{ asset('bundles/stikmenreg/css/jumbotron.css') }}" rel="stylesheet">
+  <style>
+    {% block customcss %}{% endblock %}
+  </style>
 {% endblock %}
 
 {% block body %}
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ path('homepage') }}">REGIS</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li{% if path(app.request.attributes.get('_route')) == path('events') %} class="active"{% endif %}><a href="{{ path('events') }}">Events</a></li>
-            <li{% if path(app.request.attributes.get('_route')) == path('contact') %} class="active"{% endif %}><a href="{{ path('contact') }}">Contact</a></li>
-          </ul>
-          {% if is_granted('ROLE_USER') %}
-            <ul class="nav navbar-nav navbar-right">
-              {% if is_granted('ROLE_ADMIN') %}
-                <li{% if path(app.request.attributes.get('_route')) == path('users') %} class="active"{% endif %}><a href="{{ path('users') }}">Users</a></li>
-              {% endif %}
-              <li><a href="{{ path('logout') }}">Logout</a></li>
-            </ul>
-          {% else %}
-            <form action="{{ path('login_check') }}" method="post" class="navbar-form navbar-right" role="form">
-              <div class="form-group">
-                <input type="email" id="username" name="_username" placeholder="email" class="form-control">
-              </div>
-              <div class="form-group">
-                <input type="password" id="password" name="_password" placeholder="password" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-          {% endif %}
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-
-    {% block highlight %}{% endblock %}
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-      {% block content %}{% endblock %}
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('homepage') }}"><span style="text-transform: lowercase;">e</span>reg</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li{% if
+            path(app.request.attributes.get('_route')) == path('events') or
+            path(app.request.attributes.get('_route')) == path('events_create') or
+            path(app.request.attributes.get('_route')) == path('events_edit') or
+            path(app.request.attributes.get('_route')) == path('events_show')
+          %} class="active"  {% endif %}><a href="{{ path('events') }}">events</a></li>
+          <li{% if
+            path(app.request.attributes.get('_route')) == path('contact')
+          %} class="active"{% endif %}><a href="{{ path('contact') }}">contact</a></li>
+        </ul>
+        {% if is_granted('ROLE_USER') %}
+          <ul class="nav navbar-nav navbar-right">
+            {% if is_granted('ROLE_ADMIN') %}
+              <li{% if
+                path(app.request.attributes.get('_route')) == path('users') or
+                path(app.request.attributes.get('_route')) == path('users_create') or
+                path(app.request.attributes.get('_route')) == path('users_edit') or
+                path(app.request.attributes.get('_route')) == path('users_show')
+              %} class="active"{% endif %}><a href="{{ path('users') }}">users</a></li>
+            {% endif %}
+            <li><a href="{{ path('logout') }}">logout</a></li>
+          </ul>
+        {% else %}
+          <form role="form" action="{{ path('login_check') }}" method="post" class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="email" id="username" name="_username" placeholder="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="_password" placeholder="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">sign in</button>
+          </form>
+        {% endif %}
+      </div><!--/.navbar-collapse -->
+    </div>
+  </div>
 
-      <hr>
+  {% block highlight %}{% endblock %}
+  <div class="container" id="main-body">
+    {% block content %}{% endblock %}
 
-      <footer class="text-center">
-        <p>&copy; Stikmen 2014</p>
-      </footer>
-    </div> <!-- /container -->
+    <hr>
+
+    <footer class="text-center">
+      <p>&copy; 2014 <a href="http://mroberts.me">mroberts.me</a></p>
+    </footer>
+  </div> <!-- /container -->
+{% endblock %}
+
+{% block javascripts %}
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+<script src="{{ asset('bundles/stikmenreg/js/custom.js') }}"></script>
 {% endblock %}

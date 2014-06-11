@@ -4,11 +4,8 @@
     Login
 {% endblock %}
 
-{% block stylesheets %}
-<style>
+{% block customcss %}
   body {
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-color: #eee;
   }
 
@@ -17,8 +14,7 @@
     padding: 15px;
     margin: 0 auto;
   }
-  .form-signin .form-signin-heading,
-  .form-signin .checkbox {
+  .form-signin .form-signin-heading, .form-signin .checkbox {
     margin-bottom: 10px;
   }
   .form-signin .checkbox {
@@ -46,7 +42,6 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -55,8 +50,8 @@
   {% if error %}
     <div class="alert alert-danger">{{ error.message }}</div>
   {% endif %}
-  <input type="email" id="username" name="_username"  class="form-control" placeholder="email" required autofocus value="{{ last_username }}">
-  <input type="password" id="password" name="_password"  class="form-control" placeholder="password" required>
+  <input type="email" id="username" name="_username" class="form-control" placeholder="email" required autofocus value="{{ last_username }}">
+  <input type="password" id="password" name="_password" class="form-control" placeholder="password" required>
 <!--
   <label class="checkbox">
     <input type="checkbox" value="remember-me"> Remember me

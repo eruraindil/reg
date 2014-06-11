@@ -1,23 +1,33 @@
 {% extends 'StikmenRegBundle::base.html.twig' %}
 
 {% block title %}
-    Users
+  Users
+{% endblock %}
+
+{% block customcss %}
+  #create {
+    border-radius: 6px 6px 0 0;
+  }
+
+  #user-list li:first-child {
+    border-top-left-radius: 0;
+  }
 {% endblock %}
 
 {% block content %}
 <h1>Users</h1>
 
-<a href="{{ path('users_create') }}" class="btn btn-primary">Create user</a>
+<a href="{{ path('users_create') }}" class="btn btn-primary" id="create">Create user</a>
 
-{% for user in users %}
-<ul class="list-group">
-  <li class="list-group-item clearfix">{{ user.getUsername() }}</a>
+<ul class="list-group" id="user-list">
+  {% for user in users %}
+  <li class="list-group-item clearfix">{{ user.getUsername() }}
     <div class="btn-group pull-right">
-      <a href="{{ path('users_edit', { 'id': user.getId() }) }}" class="btn btn-warning">Edit <span class="glyphicon glyphicon-edit"></span></a>
-      <a href="" class="btn btn-danger">Delete <span class="glyphicon glyphicon-remove"></span></a>
+      <a href="{{ path('users_edit', { 'id': user.getId() }) }}" class="btn btn-xs btn-warning">Edit <span class="glyphicon glyphicon-edit"></span></a>
+      <a href="" class="btn btn-xs btn-danger">Delete <span class="glyphicon glyphicon-remove"></span></a>
     </div>
   </li>
+  {% endfor %}
 </ul>
-{% endfor %}
 
 {% endblock %}

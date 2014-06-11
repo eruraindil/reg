@@ -35,6 +35,13 @@ class User implements UserInterface, \Serializable
     protected $password;
 
     /**
+     * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
+     */
+    protected $url;
+
+    /**
      * @ORM\Column(type="array")
      */
     protected $roles;
@@ -149,5 +156,28 @@ class User implements UserInterface, \Serializable
         $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return User
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

@@ -1,0 +1,55 @@
+{% extends 'StikmenRegBundle::base.html.twig' %}
+
+{% block title %}
+    {{ event.getName() }}
+{% endblock %}
+
+{% block customcss %}
+
+{% endblock %}
+
+{% block content %}
+<h1>{{ event.getName() }}</h1>
+<ol class="breadcrumb">
+  <li><a href="{{ path('events') }}">Events</a></li>
+  <li class="active">{{ event.getName() }}</li>
+</ol>
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>{{ event.getDescription() }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <table class="table table-bordered table-condensed">
+      <tr>
+        {% if event.getStarttimeAsStr("Y-m-d") == event.getEndtimeAsStr("Y-m-d") %}
+          <td colspan=2><strong>Date:</strong> {{ event.getStarttimeAsStr("Y-m-d") }}</td>
+        {% else %}
+          <td><strong>Start Date:</strong> {{ event.getStarttimeAsStr("Y-m-d") }}</td>
+          <td><strong>End Date:</strong> {{ event.getEndtimeAsStr("Y-m-d") }}</td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td><strong>Start Time:</strong> {{ event.getStarttimeAsStr("H:i") }}</td>
+        <td><strong>End Time:</strong> {{ event.getEndtimeAsStr("H:i") }}</td>
+      </tr>
+      <tr>
+        <td colspan=2>
+          <strong>Attendance</strong>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{ event.getCurAttendance() }}" aria-valuemin="0" aria-valuemax="{{ event.getMaxAttendance() }}" style="width: {{ event.getCurAttendance() }}%;">
+              {{ event.getCurAttendance() }}%
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2></td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}
